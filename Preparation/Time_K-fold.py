@@ -36,3 +36,7 @@ mse_scores = get_fold_mse(train, kf)
 # Overall validation score
 print('Mean validation MSE: {:.5f}'.format(np.mean(mse_scores)))
 print('MSE by fold: {}'.format(mse_scores))
+# Overall Score Minimizing
+print('Overall validation MSE: {:.5f}'.format(np.mean(mse_scores) + np.std(mse_scores)))
+# Overall Score Maximizing
+print('Overall validation MSE: {:.5f}'.format(np.mean(mse_scores) - np.std(mse_scores)))
