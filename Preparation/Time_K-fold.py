@@ -13,8 +13,9 @@ train = train.sort_values('date')
 
 # Iterate through each split
 fold = 0
-for train_index, test_index in ____.____(____):
-    cv_train, cv_test = ____.____[____], ____.____[____]
+for train_index, test_index in time_kfold.split(train):
+    # Obtain training and testing folds
+    cv_train, cv_test = train.iloc[train_index], train.iloc[test_index]
     
     print('Fold :', fold)
     print('Train date range: from {} to {}'.format(cv_train.date.min(), cv_train.date.max()))
