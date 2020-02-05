@@ -21,3 +21,18 @@ for train_index, test_index in time_kfold.split(train):
     print('Train date range: from {} to {}'.format(cv_train.date.min(), cv_train.date.max()))
     print('Test date range: from {} to {}\n'.format(cv_test.date.min(), cv_test.date.max()))
     fold += 1
+
+    
+import numpy as np
+# Sort train data by date
+# train = train.sort_values('date')
+
+# Initialize 3-fold time cross-validation
+kf = TimeSeriesSplit(n_splits=3)
+
+# Get MSE scores for each cross-validation split
+mse_scores = get_fold_mse(train, kf)
+
+# Overall validation score
+print('Mean validation MSE: {:.5f}'.format(np.mean(mse_scores)))
+print('MSE by fold: {}'.format(mse_scores))
